@@ -1,0 +1,11 @@
+.profile__intro {
+  color: #FFFFFF;
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__intro  {
+    flex-direction: column;
+    align-items: center;
+  }
+}
