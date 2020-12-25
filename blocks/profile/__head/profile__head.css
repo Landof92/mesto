@@ -1,4 +1,4 @@
-.profile__head{
+.profile__head {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,8 +6,8 @@
 }
 
 @media screen and (max-width: 767px) {
-  .profile__head  {
-    margin: 22.25px 0 14px 20px ;
+  .profile__head {
+    margin: 22.25px 0 14px 20px;
     justify-content: center;
   }
 }
