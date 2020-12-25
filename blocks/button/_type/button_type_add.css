@@ -6,9 +6,14 @@
   background: url(../images/plus.svg) no-repeat center;
 }
 
+@media screen and (max-width: 1023px) {
+  .button_type_add {
+    margin-top: 36px;
+    width: 400px;
+  }
+}
 @media screen and (max-width: 767px) {
   .button_type_add {
     width: 282px;
-    margin-top: 36px;
   }
 }

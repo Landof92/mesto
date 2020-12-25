@@ -1,0 +1,22 @@
+.popup__close {
+  width: 40px;
+  height: 40px;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  transition: opacity 0.5s;
+}
+.popup__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__close {
+    top: -46px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+  }
+}

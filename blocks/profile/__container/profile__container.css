@@ -1,10 +1,10 @@
-.profile__intro {
+.profile__container {
   color: #FFFFFF;
   display: flex;
 }
 
 @media screen and (max-width: 767px) {
-  .profile__intro  {
+  .profile__container  {
     flex-direction: column;
     align-items: center;
   }

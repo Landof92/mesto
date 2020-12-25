@@ -13,8 +13,8 @@
     </header>
     <main class="content">
       <section class="profile">
-        <div class="profile__intro">
-          <img class="profile__foto" src="./blocks/profile/__foto/images/image.png" alt="фотография Жак-Ив Кусто">
+        <div class="profile__container">
+          <img class="profile__foto" src="./blocks/profile/__foto/images/depositphotos_107694484-stock-photo-little-prince-illustration.jpg" alt="маленький принц со своим лисенком сидящие спиной к зрителю">
           <div class="profile__info">
             <div class="profile__head">
               <h1 class="profile__title">
@@ -33,47 +33,45 @@
       </section>
       <section class="cards">
         <div class="card">
-          <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1088404-unsplash1.jpg" alt="замок в горах">
+          <img class="card__image" src="./blocks/card/__image/images/LEpwl8j7fQ.jpg" alt="рука девушки с сидящей на ней бабочкой">
           <div class="card__footer">
             <h2 class="card__title">Карачаевск</h2>
-            <div class="button button_type_like">
-            </div>
+            <button class="button button_type_like"></button>
           </div>
         </div>
         <div class="card">
           <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1404681-unsplash2.jpg" alt="замок в горах">
           <div class="card__footer">
             <h2 class="card__title">Гора Эльбрус</h2>
-            <button class="button button_type_like">
-            </button>
+            <button class="button button_type_like"></button>
           </div>
         </div>
         <div class="card">
           <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1556355-unsplash3.jpg" alt="замок в горах">
           <div class="card__footer">
             <h2 class="card__title">Домбай</h2>
-            <div class="button button_type_like"></div>
+            <button class="button button_type_like"></button>
           </div>
         </div>
         <div class="card">
           <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1404681-unsplash2.jpg" alt="замок в горах">
           <div class="card__footer">
             <h2 class="card__title">Гора Эльбрус</h2>
-            <div class="button button_type_like"></div>
+            <button class="button button_type_like"></button>
           </div>
         </div>
         <div class="card">
           <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1556355-unsplash3.jpg" alt="замок в горах">
           <div class="card__footer">
             <h2 class="card__title">Домбай</h2>
-            <div class="button button_type_like"></div>
+            <button class="button button_type_like"></button>
           </div>
         </div>
         <div class="card">
           <img class="card__image" src="./blocks/card/__image/images/kirill-pershin-1088404-unsplash1.jpg" alt="замок в горах">
           <div class="card__footer">
             <h2 class="card__title">Карачаевск</h2>
-            <div class="button button_type_like"></div>
+            <button class="button button_type_like"></button>
           </div>
         </div>
       </section>
@@ -83,6 +81,20 @@
         &copy;2020 Mesto Russia
       </p>
     </footer>
+    <section class="popup">
+      <div class="popup__container">
+        <img class="popup__close" src="./blocks/popup/__close/images/plus.svg" alt="крестик">
+        <h2 class="popup__title">
+          Редактировать профиль
+        </h2>
+        <form class="popup__form">
+          <input class="popup__form-input popup__form-input_type_name" type="text" value="Жак-Ив Кусто">
+          <input class="popup__form-input popup__form-input_type_job" type="text" value="Исследователь океана">
+          <input class="popup__form-button" type="submit" value="Сохранить">
+        </form>
+      </div>
+    </section>
   </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
