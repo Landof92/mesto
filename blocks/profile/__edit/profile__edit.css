@@ -1,0 +1,12 @@
+.profile__edit {
+  width: 24px;
+  height: 24px;
+  background: url(./images/pen.svg) no-repeat center;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+  }
+}
