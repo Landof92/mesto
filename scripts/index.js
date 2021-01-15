@@ -11,8 +11,10 @@ let jobInput = formElement.querySelector(".popup__form-input_type_job");
 function toggleClass(event) {
   if (event.target === event.currentTarget) {
     popup.classList.toggle("popup_opened");
-    nameInput.value = title.textContent.trim();
-    jobInput.value = subtitle.textContent.trim();
+    if (popup.classList.contains("popup_opened")) {
+      nameInput.value = title.textContent.trim();
+      jobInput.value = subtitle.textContent.trim();
+    }
   }
 }
 
