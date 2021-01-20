@@ -20,7 +20,7 @@
               <h1 class="profile__title">
                 Жак-Ив Кусто
               </h1>
-              <button  class="button button_type_edit">
+              <button class="button profile__edit" type="button">
               </button>
             </div>
             <p class="profile__subtitle">
@@ -28,7 +28,7 @@
             </p>
           </div>
         </div>
-        <button class="button button_type_add">
+        <button class="button profile__add" type="button">
         </button>
       </section>
       <section class="cards">
@@ -51,14 +51,14 @@
     </footer>
     <section class="popup">
       <div class="popup__container">
-        <img class="popup__close" src="./blocks/popup/__close/images/plus.svg" alt="крестик">
+        <button class="button popup__close" type="button"></button>
         <h2 class="popup__title">
           Редактировать профиль
         </h2>
-        <form class="popup__form">
-          <input class="popup__form-input popup__form-input_type_name" type="text" value="Жак-Ив Кусто">
-          <input class="popup__form-input popup__form-input_type_job" type="text" value="Исследователь океана">
-          <input class="popup__form-button" type="submit" value="Сохранить">
+        <form class="popup__form" name="edit-form">
+          <input class="popup__form-input popup__form-input_type_name" type="text" name="name">
+          <input class="popup__form-input popup__form-input_type_job" type="text" name="job">
+          <input class="button popup__form-button" type="submit" value="Сохранить">
         </form>
       </div>
     </section>

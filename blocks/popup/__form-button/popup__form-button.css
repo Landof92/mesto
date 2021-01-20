@@ -1,15 +1,12 @@
 .popup__form-button {
-  background-color: #000000;
   color: #ffffff;
-  outline: none;
   border-radius: 2px;
-  transition: opacity 0.5s;
+  border: none;
   width: 100%;
   height: 50px;
   margin-top: 48px;
 }
 .popup__form-button:hover {
-  cursor: pointer;
   opacity: 0.8;
 }
 
