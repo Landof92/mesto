@@ -1,3 +1,33 @@
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+const templateCard = document.querySelector(".template-card").content;
+const cards = document.querySelector(".cards");
+
+
 let openPopup = document.querySelector(".button_type_edit");
 let popup = document.querySelector(".popup");
 let closePopup = document.querySelector(".popup__close");
@@ -23,10 +53,25 @@ function handleFormSubmit(evt) {
 }
 formElement.addEventListener('submit', handleFormSubmit);
 
-let likes = document.querySelectorAll(".button_type_like");
+
 function toggleLike(event) {
   event.currentTarget.classList.toggle("button_active");
 }
-for (let i = 0; i < likes.length; i += 1) {
-  likes[i].addEventListener('click', toggleLike);
+
+
+function render() {
+  initialCards.forEach(function(item){
+    const card = templateCard.cloneNode(true);
+    const cardTitle = card.querySelector(".card__title");
+    const cardImage = card.querySelector(".card__image");
+    const likeButton = card.querySelector(".button_type_like");
+    const deleteButton = card.querySelector(".button_type_delete");
+    likeButton.addEventListener('click', toggleLike)
+    cardTitle.textContent = item.name;
+    cardImage.setAttribute('src', item.link);
+    cards.append(card);
+  });
 }
+render();
+
+
