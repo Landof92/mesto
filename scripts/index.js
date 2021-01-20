@@ -27,13 +27,11 @@ const initialCards = [
 const templateCard = document.querySelector(".template-card").content;
 const cards = document.querySelector(".cards");
 
-
-let openPopup = document.querySelector(".button_type_edit");
 let openPopup = document.querySelector(".profile__edit");
 let popup = document.querySelector(".popup");
 let closePopup = document.querySelector(".popup__close");
 let formElement = document.querySelector(".popup__form");
-let likes = document.querySelectorAll(".card__button");
+let likes = document.querySelectorAll(".card__like");
 let title = document.querySelector(".profile__title");
 let subtitle = document.querySelector(".profile__subtitle");
 let nameInput = formElement.querySelector(".popup__form-input_type_name");
@@ -57,17 +55,21 @@ function handleFormSubmit(evt) {
 }
 
 function toggleLike(event) {
-  event.currentTarget.classList.toggle("card__button_active");
+  event.currentTarget.classList.toggle("card__like_active");
 }
 
+function deleteCard(event) {
+  event.currentTarget.closest(".card").remove();
+}
 
 function render() {
   initialCards.forEach(function(item){
     const card = templateCard.cloneNode(true);
     const cardTitle = card.querySelector(".card__title");
     const cardImage = card.querySelector(".card__image");
-    const likeButton = card.querySelector(".button_type_like");
-    const deleteButton = card.querySelector(".button_type_delete");
+    const likeButton = card.querySelector(".card__like");
+    const deleteButton = card.querySelector(".card__delete");
+    deleteButton.addEventListener('click', deleteCard)
     likeButton.addEventListener('click', toggleLike)
     cardTitle.textContent = item.name;
     cardImage.setAttribute('src', item.link);
