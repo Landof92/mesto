@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,7 +34,7 @@
       <section class="cards">
         <template class="template-card">
           <div class="card">
-            <button class="button card__delete">delete</button>
+            <button class="button card__delete"></button>
             <img class="card__image" src="./blocks/card/__image/images/roberto-nickson-5PQn41LFsQk-unsplash .jpg" alt="ночная улица, идет снег, вдоль дороги горят фонари, стоят дома и новогодние елки">
             <div class="card__footer">
               <h2 class="card__title">Канада</h2>
@@ -49,7 +49,7 @@
         &copy;2020 Mesto Russia
       </p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_type_edit">
       <div class="popup__container">
         <button class="button popup__close" type="button"></button>
         <h2 class="popup__title">
@@ -60,6 +60,28 @@
           <input class="popup__form-input popup__form-input_type_job" type="text" name="job">
           <input class="button popup__form-button" type="submit" value="Сохранить">
         </form>
+      </div>
+    </section>
+    <section class="popup popup_type_add">
+      <div class="popup__container">
+        <button class="button popup__close" type="button"></button>
+        <h2 class="popup__title">
+          Новое место
+        </h2>
+        <form class="popup__form" name="edit-form">
+          <input class="popup__form-input popup__form-input_type_name" placeholder="Название" type="text" name="name">
+          <input class="popup__form-input popup__form-input_type_link" placeholder="Ссылка на картинку" type="text" name="link">
+          <input class="button popup__form-button" type="submit" value="Создать">
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_type_image">
+      <div class="popup__container popup__container_type_image">
+        <img class="popup__image" src="./blocks/popup/__image/wallpapers-autumn-37.jpg" alt="">
+        <button class="button popup__close" type="button"></button>
+        <h2 class="popup__title popup__title_type_image">
+          Горный алтай
+        </h2>
       </div>
     </section>
   </div>

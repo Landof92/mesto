@@ -1,0 +1,15 @@
+.popup_type_image {
+  padding: 90px 232px;
+}
+
+@media screen and (max-width: 1279px) {
+  .popup_type_image {
+    padding: 90px 100px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .popup_type_image {
+    padding: 136px 40px;
+  }
+}
