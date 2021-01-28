@@ -49,55 +49,46 @@ const imagePopupClose = imagePopup.querySelector(".popup__close");
 const popupImage = imagePopup.querySelector(".popup__image");
 const titleImagePopup = imagePopup.querySelector(".popup__title");
 
-
-function togglePopupOpened(popup) {
-  popup.classList.toggle("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
 
-function toggleImagePopup(event) {
-  if (event.target === event.currentTarget) {
-    togglePopupOpened(imagePopup);
-    if (imagePopup.classList.contains("popup_opened")) {
-      const card = event.currentTarget.closest(".card");
-      const text = card.querySelector(".card__title");
-      titleImagePopup.textContent = text.textContent;
-      popupImage.setAttribute('src', event.currentTarget.getAttribute('src'));
-      popupImage.setAttribute('alt', text.textContent);
-    }
+function closePopup(popup, event) {
+  if(!event || event.target === event.currentTarget) {
+    popup.classList.remove("popup_opened");
   }
+ }
+
+function openImagePopup(event) {
+  openPopup(imagePopup);
+  const card = event.currentTarget.closest(".card");
+  const text = card.querySelector(".card__title");
+  titleImagePopup.textContent = text.textContent;
+  popupImage.setAttribute('src', event.currentTarget.getAttribute('src'));
+  popupImage.setAttribute('alt', text.textContent);
 }
 
-function toggleAddPopup(event) {
-  if (event.target === event.currentTarget) {
-    togglePopupOpened(addPopup);
-  }
-}
-
-function handleAddFormSubmit(evt) {
-  evt.preventDefault();
+function handleAddFormSubmit(event) {
+  event.preventDefault();
   const inputValues = {
     name: addNameInput.value,
     link: addLinkInput.value
   };
   addCard(inputValues);
-  addPopup.classList.remove("popup_opened");
+  closePopup(addPopup);
 }
 
-function toggleEditPopup(event) {
-  if (event.target === event.currentTarget) {
-    togglePopupOpened(editPopup);
-    if (editPopup.classList.contains("popup_opened")) {
-      editNameInput.value = title.textContent.trim();
-      editJobInput.value = subtitle.textContent.trim();
-    }
-  }
+function openeEditPopup() {
+  openPopup(editPopup);
+  editNameInput.value = title.textContent.trim();
+  editJobInput.value = subtitle.textContent.trim();
 }
 
-function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-  title.textContent = editNameInput.value
-  subtitle.textContent = editJobInput.value
-  editPopup.classList.remove("popup_opened");
+function handleEditFormSubmit(event) {
+  event.preventDefault();
+  title.textContent = editNameInput.value;
+  subtitle.textContent = editJobInput.value;
+  closePopup(editPopup);
 }
 
 function toggleLike(event) {
@@ -113,7 +104,7 @@ function render() {
 }
 render();
 
-function addCard(item) {
+function createCard(item) {
   const card = templateCard.cloneNode(true);
   const cardTitle = card.querySelector(".card__title");
   const cardImage = card.querySelector(".card__image");
@@ -122,21 +113,25 @@ function addCard(item) {
   cardTitle.textContent = item.name;
   cardImage.setAttribute('src', item.link);
   cardImage.setAttribute('alt', item.name);
-  cardImage.addEventListener('click', toggleImagePopup);
-  deleteButton.addEventListener('click', deleteCard)
-  likeButton.addEventListener('click', toggleLike)
-  cards.prepend(card);
+  cardImage.addEventListener('click', openImagePopup);
+  deleteButton.addEventListener('click', deleteCard);
+  likeButton.addEventListener('click', toggleLike);
+  return card;
 }
 
-editButton.addEventListener('click', toggleEditPopup);
-editPopupClose.addEventListener('click', toggleEditPopup);
-editPopup.addEventListener('click', toggleEditPopup);
+function addCard(item) {
+  cards.prepend(createCard(item));
+}
+
+editButton.addEventListener('click', openeEditPopup);
+editPopupClose.addEventListener('click', (event) => closePopup(editPopup, event));
+editPopup.addEventListener('click', (event) => closePopup(editPopup, event));
 editFormElement.addEventListener('submit', handleEditFormSubmit);
 
-addButton.addEventListener('click', toggleAddPopup);
-addPopupClose.addEventListener('click', toggleAddPopup);
-addPopup.addEventListener('click', toggleAddPopup);
+addButton.addEventListener('click', () => openPopup(addPopup));
+addPopupClose.addEventListener('click', (event) => closePopup(addPopup, event));
+addPopup.addEventListener('click',  (event) => closePopup(addPopup, event));
 addFormElement.addEventListener('submit', handleAddFormSubmit);
 
-imagePopupClose.addEventListener('click', toggleImagePopup);
-imagePopup.addEventListener('click', toggleImagePopup);
+imagePopupClose.addEventListener('click', (event) => closePopup(imagePopup, event));
+imagePopup.addEventListener('click', (event) => closePopup(imagePopup, event));
