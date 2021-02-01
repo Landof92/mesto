@@ -49,6 +49,7 @@ const imagePopupClose = imagePopup.querySelector(".popup__close");
 const popupImage = imagePopup.querySelector(".popup__image");
 const titleImagePopup = imagePopup.querySelector(".popup__title");
 
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
@@ -122,11 +123,20 @@ function createCard(item) {
 function addCard(item) {
   cards.prepend(createCard(item));
 }
+function closeActivePopup(event) {
+  if ( event.key === 'Escape') {
+    const popup = document.querySelector(".popup_opened");
+    if (popup){
+      closePopup(popup)
+    }
+  }
+}
 
 editButton.addEventListener('click', openeEditPopup);
 editPopupClose.addEventListener('click', (event) => closePopup(editPopup, event));
 editPopup.addEventListener('click', (event) => closePopup(editPopup, event));
 editFormElement.addEventListener('submit', handleEditFormSubmit);
+
 
 addButton.addEventListener('click', () => openPopup(addPopup));
 addPopupClose.addEventListener('click', (event) => closePopup(addPopup, event));
@@ -135,3 +145,5 @@ addFormElement.addEventListener('submit', handleAddFormSubmit);
 
 imagePopupClose.addEventListener('click', (event) => closePopup(imagePopup, event));
 imagePopup.addEventListener('click', (event) => closePopup(imagePopup, event));
+
+document.addEventListener('keydown', closeActivePopup);

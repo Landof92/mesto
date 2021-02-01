@@ -56,8 +56,10 @@
           Редактировать профиль
         </h2>
         <form class="popup__form" name="edit-form">
-          <input class="popup__form-input popup__form-input_type_name" type="text" name="name">
-          <input class="popup__form-input popup__form-input_type_job" type="text" name="job">
+          <input class="popup__form-input popup__form-input_type_name" id="name" type="text" name="name" minlength="2" maxlength="40" required>
+          <span class="popup__form-input-error" id="name-error">пкуыинн р каен5</span>
+          <input class="popup__form-input popup__form-input_type_job" id="job" type="text" name="job" minlength="2" maxlength="200" required>
+          <span class="popup__form-input-error" id="job-error">впдолрдлова</span>
           <input class="button popup__form-button" type="submit" value="Сохранить">
         </form>
       </div>
@@ -68,9 +70,11 @@
         <h2 class="popup__title">
           Новое место
         </h2>
-        <form class="popup__form" name="edit-form">
-          <input class="popup__form-input popup__form-input_type_name" placeholder="Название" type="text" name="name">
-          <input class="popup__form-input popup__form-input_type_link" placeholder="Ссылка на картинку" type="text" name="link">
+        <form class="popup__form" name="add-form">
+          <input class="popup__form-input popup__form-input_type_name" id="title" placeholder="Название" type="text" name="title">
+          <span class="popup__form-input-error" id="title-error">Порвапдюоыузшдлвмбьва</span>
+          <input class="popup__form-input popup__form-input_type_link" id="link" placeholder="Ссылка на картинку" type="url" name="link">
+          <span class="popup__form-input-error" id="link-error">важщшропвдлопадолпажло далопав</span>
           <input class="button popup__form-button" type="submit" value="Создать">
         </form>
       </div>

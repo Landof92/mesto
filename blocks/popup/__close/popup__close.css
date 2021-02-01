@@ -6,8 +6,8 @@
   height: 40px;
   transform: rotate(-45deg);
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -37px;
+  right: -37px;
   }
 
 @media screen and (max-width: 767px) {
