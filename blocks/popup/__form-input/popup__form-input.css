@@ -12,4 +12,15 @@
 .popup__form-input:focus {
   outline: none;
 }
-
+.popup__form-input::-webkit-input-placeholder {
+  color:#C4C4C4;
+}
+.popup__form-input::-moz-placeholder          {
+  color:#C4C4C4;
+}
+.popup__form-input::-ms-input-placeholder     {
+  color:#C4C4C4;
+}
+.popup__form-input::placeholder               {
+  color:#C4C4C4;
+}

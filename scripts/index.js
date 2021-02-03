@@ -50,15 +50,35 @@ const popupImage = imagePopup.querySelector(".popup__image");
 const titleImagePopup = imagePopup.querySelector(".popup__title");
 
 
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__form-input',
+  submitButtonSelector: '.popup__form-button',
+  inactiveButtonClass: 'popup__form-button_disabled',
+  inputErrorClass: 'popup__form-input_type_error',
+  errorClass: 'popup__form-input-error_active'
+});
+
+function closeActivePopup(event) {
+  if ( event.key === 'Escape') {
+    const popup = document.querySelector(".popup_opened");
+    if (popup){
+      closePopup(popup)
+    }
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown',closeActivePopup)
 }
 
 function closePopup(popup, event) {
   if(!event || event.target === event.currentTarget) {
     popup.classList.remove("popup_opened");
+    document.removeEventListener('keydown', closeActivePopup);
   }
- }
+}
 
 function openImagePopup(event) {
   openPopup(imagePopup);
@@ -123,14 +143,6 @@ function createCard(item) {
 function addCard(item) {
   cards.prepend(createCard(item));
 }
-function closeActivePopup(event) {
-  if ( event.key === 'Escape') {
-    const popup = document.querySelector(".popup_opened");
-    if (popup){
-      closePopup(popup)
-    }
-  }
-}
 
 editButton.addEventListener('click', openeEditPopup);
 editPopupClose.addEventListener('click', (event) => closePopup(editPopup, event));
@@ -145,5 +157,3 @@ addFormElement.addEventListener('submit', handleAddFormSubmit);
 
 imagePopupClose.addEventListener('click', (event) => closePopup(imagePopup, event));
 imagePopup.addEventListener('click', (event) => closePopup(imagePopup, event));
-
-document.addEventListener('keydown', closeActivePopup);

@@ -4,6 +4,8 @@
   color: #000000;
   opacity: 0.2;
   border: 1px solid #000000;
+  pointer-events: none;
+  user-select: none;
 }
 .popup__form-button_disabled:hover {
   opacity: 0.2;
