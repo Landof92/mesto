@@ -1,4 +1,6 @@
-const templateCard = document.querySelector(".template-card").content;
+import { Card } from './Card.js';
+import { initialCards } from './initial-сards.js';
+
 const cards = document.querySelector(".cards");
 
 const editButton = document.querySelector(".profile__edit");
@@ -20,8 +22,7 @@ const addFormButton = addPopup.querySelector(".popup__form-button");
 
 const imagePopup =  document.querySelector(".popup_type_image");
 const imagePopupClose = imagePopup.querySelector(".popup__close");
-const popupImage = imagePopup.querySelector(".popup__image");
-const titleImagePopup = imagePopup.querySelector(".popup__title");
+
 
 const settings = {
   formSelector: '.popup__form',
@@ -43,9 +44,9 @@ function closeActivePopup(event) {
   }
 }
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener('keydown',closeActivePopup)
+  document.addEventListener('keydown', closeActivePopup)
 }
 
 function closePopup(popup, event) {
@@ -53,15 +54,6 @@ function closePopup(popup, event) {
     popup.classList.remove("popup_opened");
     document.removeEventListener('keydown', closeActivePopup);
   }
-}
-
-function openImagePopup(event) {
-  openPopup(imagePopup);
-  const card = event.currentTarget.closest(".card");
-  const text = card.querySelector(".card__title");
-  titleImagePopup.textContent = text.textContent;
-  popupImage.src = event.currentTarget.src;
-  popupImage.alt = text.textContent;
 }
 
 function handleAddFormSubmit(event) {
@@ -89,36 +81,14 @@ function handleEditFormSubmit(event) {
   closePopup(editPopup);
 }
 
-function toggleLike(event) {
-  event.currentTarget.classList.toggle("card__like_active");
-}
-
-function deleteCard(event) {
-  event.currentTarget.closest(".card").remove();
-}
-
 function render(cards) {
   cards.forEach(addCard);
 }
 render(initialCards);
 
-function createCard(item) {
-  const card = templateCard.cloneNode(true);
-  const cardTitle = card.querySelector(".card__title");
-  const cardImage = card.querySelector(".card__image");
-  const likeButton = card.querySelector(".card__like");
-  const deleteButton = card.querySelector(".card__delete");
-  cardTitle.textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  cardImage.addEventListener('click', openImagePopup);
-  deleteButton.addEventListener('click', deleteCard);
-  likeButton.addEventListener('click', toggleLike);
-  return card;
-}
-
 function addCard(item) {
-  cards.prepend(createCard(item));
+  const card = new Card(item, ".template-card");
+  cards.prepend(card.generateCard());
 }
 
 editButton.addEventListener('click', openeEditPopup);
