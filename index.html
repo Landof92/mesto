@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
+
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo"  src="./blocks/header/__logo/images/Vector.svg" alt="логотип">
+      <img class="header__logo" src="./blocks/header/__logo/images/Vector.svg" alt="логотип">
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__foto" src="./blocks/profile/__foto/images/karsten-winegeart-n3c5pSoD2Fc-unsplash.jpg" alt="собака на красном фоне в новогоднем костюме и плюшевыми рогами оленя">
+          <img class="profile__foto" src="./blocks/profile/__foto/images/karsten-winegeart-n3c5pSoD2Fc-unsplash.jpg"
+            alt="собака на красном фоне в новогоднем костюме и плюшевыми рогами оленя">
           <div class="profile__info">
             <div class="profile__head">
               <h1 class="profile__title">
@@ -56,9 +59,11 @@
           Редактировать профиль
         </h2>
         <form class="popup__form" name="edit-form" novalidate>
-          <input class="popup__form-input popup__form-input_type_name" id="name" type="text" name="name" minlength="2" maxlength="40" required>
+          <input class="popup__form-input popup__form-input_type_name" id="name" type="text" name="name" minlength="2"
+            maxlength="40" required>
           <span class="popup__form-input-error" id="name-error"></span>
-          <input class="popup__form-input popup__form-input_type_job" id="job" type="text" name="job" minlength="2" maxlength="200" required>
+          <input class="popup__form-input popup__form-input_type_job" id="job" type="text" name="job" minlength="2"
+            maxlength="200" required>
           <span class="popup__form-input-error" id="job-error"></span>
           <input class="button popup__form-button" type="submit" value="Сохранить">
         </form>
@@ -71,9 +76,11 @@
           Новое место
         </h2>
         <form class="popup__form" name="add-form" novalidate>
-          <input class="popup__form-input popup__form-input_type_name" id="title" placeholder="Название" type="text" name="title" minlength="2" maxlength="30" required>
+          <input class="popup__form-input popup__form-input_type_name" id="title" placeholder="Название" type="text"
+            name="title" minlength="2" maxlength="30" required>
           <span class="popup__form-input-error" id="title-error"></span>
-          <input class="popup__form-input popup__form-input_type_link" id="link" placeholder="Ссылка на картинку" type="url" name="link" required>
+          <input class="popup__form-input popup__form-input_type_link" id="link" placeholder="Ссылка на картинку"
+            type="url" name="link" required>
           <span class="popup__form-input-error" id="link-error"></span>
           <input class="button popup__form-button" type="submit" value="Создать">
         </form>
@@ -89,9 +96,10 @@
       </div>
     </section>
   </div>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
   <script type="module" src="./scripts/initial-сards.js"></script>
   <script type="module" src="./scripts/index.js"></script>
   <script type="module" src="./scripts/Card.js"></script>
 </body>
+
 </html>

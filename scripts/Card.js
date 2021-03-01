@@ -1,29 +1,29 @@
 import { openPopup } from './index.js';
 
 export class Card {
-  constructor (item, templateSelector) {
-    this.name  = item.name;
-    this.link = item.link;
-    this.selector = templateSelector;
+  constructor(item, templateSelector) {
+    this._name = item.name;
+    this._link = item.link;
+    this._selector = templateSelector;
   }
 
   _getTemplate() {
-    const templateCard = document.querySelector(this.selector).content.querySelector(".card").cloneNode(true);
+    const templateCard = document.querySelector(this._selector).content.querySelector(".card").cloneNode(true);
     return templateCard;
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector(".card__title").textContent = this.name;
+    this._element.querySelector(".card__title").textContent = this._name;
     const cardImage = this._element.querySelector(".card__image");
-    cardImage.src = this.link;
-    cardImage.alt = this.name;
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
     return this._element;
   }
 
   _toggleLike() {
-   this._element.querySelector(".card__like").classList.toggle("card__like_active");
+    this._element.querySelector(".card__like").classList.toggle("card__like_active");
   }
 
   _deleteCard() {
@@ -43,12 +43,12 @@ export class Card {
   }
 
   _openImage() {
-    const imagePopup =  document.querySelector(".popup_type_image");
+    const imagePopup = document.querySelector(".popup_type_image");
     openPopup(imagePopup);
-    imagePopup.querySelector(".popup__title").textContent = this.name;
+    imagePopup.querySelector(".popup__title").textContent = this._name;
     const popupImage = imagePopup.querySelector(".popup__image");
-    popupImage.src =  this.link;
-    popupImage.alt =  this.name;
+    popupImage.src = this._link;
+    popupImage.alt = this._name;
   }
 }
 

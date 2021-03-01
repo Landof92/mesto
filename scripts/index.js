@@ -1,5 +1,6 @@
 import { Card } from './Card.js';
 import { initialCards } from './initial-сards.js';
+import { FormValidator } from './FormValidator.js';
 
 const cards = document.querySelector(".cards");
 
@@ -20,9 +21,8 @@ const addNameInput = addPopup.querySelector(".popup__form-input_type_name");
 const addLinkInput = addPopup.querySelector(".popup__form-input_type_link");
 const addFormButton = addPopup.querySelector(".popup__form-button");
 
-const imagePopup =  document.querySelector(".popup_type_image");
+const imagePopup = document.querySelector(".popup_type_image");
 const imagePopupClose = imagePopup.querySelector(".popup__close");
-
 
 const settings = {
   formSelector: '.popup__form',
@@ -33,12 +33,17 @@ const settings = {
   errorClass: 'popup__form-input-error_active'
 };
 
-enableValidation(settings);
+const editFormValidator = new FormValidator(settings, editFormElement);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(settings, addFormElement);
+addFormValidator.enableValidation();
+
 
 function closeActivePopup(event) {
-  if ( event.key === 'Escape') {
+  if (event.key === 'Escape') {
     const popup = document.querySelector(".popup_opened");
-    if (popup){
+    if (popup) {
       closePopup(popup)
     }
   }
@@ -50,7 +55,7 @@ export function openPopup(popup) {
 }
 
 function closePopup(popup, event) {
-  if(!event || event.target === event.currentTarget) {
+  if (!event || event.target === event.currentTarget) {
     popup.classList.remove("popup_opened");
     document.removeEventListener('keydown', closeActivePopup);
   }
@@ -65,7 +70,7 @@ function handleAddFormSubmit(event) {
   addCard(inputValues);
   closePopup(addPopup);
   addFormElement.reset();
-  toggleButtonState([addLinkInput, addNameInput], addFormButton, settings);
+  addFormValidator.enableValidation();
 }
 
 function openeEditPopup() {
@@ -99,7 +104,7 @@ editFormElement.addEventListener('submit', handleEditFormSubmit);
 
 addButton.addEventListener('click', () => openPopup(addPopup));
 addPopupClose.addEventListener('click', (event) => closePopup(addPopup, event));
-addPopup.addEventListener('click',  (event) => closePopup(addPopup, event));
+addPopup.addEventListener('click', (event) => closePopup(addPopup, event));
 addFormElement.addEventListener('submit', handleAddFormSubmit);
 
 imagePopupClose.addEventListener('click', (event) => closePopup(imagePopup, event));
