@@ -1,8 +1,11 @@
 import { Card } from './Card.js';
 import { initialCards } from './initial-сards.js';
 import { FormValidator } from './FormValidator.js';
+import { openPopup, closePopup } from './utils.js'
 
 const cards = document.querySelector(".cards");
+
+
 
 const editButton = document.querySelector(".profile__edit");
 const editPopup = document.querySelector(".popup_type_edit");
@@ -39,28 +42,6 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(settings, addFormElement);
 addFormValidator.enableValidation();
 
-
-function closeActivePopup(event) {
-  if (event.key === 'Escape') {
-    const popup = document.querySelector(".popup_opened");
-    if (popup) {
-      closePopup(popup)
-    }
-  }
-}
-
-export function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener('keydown', closeActivePopup)
-}
-
-function closePopup(popup, event) {
-  if (!event || event.target === event.currentTarget) {
-    popup.classList.remove("popup_opened");
-    document.removeEventListener('keydown', closeActivePopup);
-  }
-}
-
 function handleAddFormSubmit(event) {
   event.preventDefault();
   const inputValues = {
@@ -70,7 +51,7 @@ function handleAddFormSubmit(event) {
   addCard(inputValues);
   closePopup(addPopup);
   addFormElement.reset();
-  addFormValidator.enableValidation();
+  addFormValidator.toggleButtonState();
 }
 
 function openeEditPopup() {
@@ -92,7 +73,7 @@ function render(cards) {
 render(initialCards);
 
 function addCard(item) {
-  const card = new Card(item, ".template-card");
+  const card = new Card(item, ".template-card", imagePopup);
   cards.prepend(card.generateCard());
 }
 

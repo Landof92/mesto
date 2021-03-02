@@ -1,10 +1,11 @@
-import { openPopup } from './index.js';
+import { openPopup } from './utils.js';
 
 export class Card {
-  constructor(item, templateSelector) {
+  constructor(item, templateSelector, imagePopup) {
     this._name = item.name;
     this._link = item.link;
     this._selector = templateSelector;
+    this._imagePopup = imagePopup
   }
 
   _getTemplate() {
@@ -28,6 +29,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
@@ -43,10 +45,9 @@ export class Card {
   }
 
   _openImage() {
-    const imagePopup = document.querySelector(".popup_type_image");
-    openPopup(imagePopup);
-    imagePopup.querySelector(".popup__title").textContent = this._name;
-    const popupImage = imagePopup.querySelector(".popup__image");
+    openPopup(this._imagePopup);
+    this._imagePopup.querySelector(".popup__title").textContent = this._name;
+    const popupImage = this._imagePopup.querySelector(".popup__image");
     popupImage.src = this._link;
     popupImage.alt = this._name;
   }
