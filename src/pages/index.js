@@ -3,8 +3,9 @@ import { Card } from '../components/Card.js';
 import { initialCards } from '../components/initial-сards.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { openPopup, closePopup } from '../components/utils.js'
+import { Section } from '../components/Section';
 
-const cards = document.querySelector(".cards");
+const cards = ".cards";
 
 
 
@@ -68,14 +69,22 @@ function handleEditFormSubmit(event) {
   closePopup(editPopup);
 }
 
-function render(cards) {
-  cards.forEach(addCard);
-}
-render(initialCards);
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, ".template-card", imagePopup)
+      const cardElement = card.generateCard();
+      cardList.addItem(cardElement);
+    },
+  },
+  cards
+);
+cardList.renderItems();
 
 function addCard(item) {
   const card = new Card(item, ".template-card", imagePopup);
-  cards.prepend(card.generateCard());
+  cardList.addItem(card.generateCard());
 }
 
 editButton.addEventListener('click', openeEditPopup);
