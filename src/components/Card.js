@@ -1,11 +1,11 @@
 import { openPopup } from './utils.js';
 
 export class Card {
-  constructor(item, templateSelector, imagePopup) {
+  constructor(item, templateSelector, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._selector = templateSelector;
-    this._imagePopup = imagePopup
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -40,16 +40,8 @@ export class Card {
       this._deleteCard()
     });
     this._element.querySelector(".card__image").addEventListener('click', () => {
-      this._openImage()
+      this._handleCardClick(this._name, this._link)
     });
-  }
-
-  _openImage() {
-    openPopup(this._imagePopup);
-    this._imagePopup.querySelector(".popup__title").textContent = this._name;
-    const popupImage = this._imagePopup.querySelector(".popup__image");
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
   }
 }
 
