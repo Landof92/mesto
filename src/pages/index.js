@@ -1,6 +1,6 @@
 import './index.css';
 import { Card } from '../components/Card.js';
-import { initialCards } from '../components/initial-сards.js';
+import { initialCards } from '../utils/initial-сards.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section';
 import { PopupWithImage } from '../components/PopupWithImage';
@@ -37,11 +37,13 @@ popupWithImage.setEventListeners();
 
 const handleCardClick = popupWithImage.open.bind(popupWithImage);
 
-const addPopup = new PopupWithForm(".popup_type_add", (inputValues) => {
-  const card = new Card(inputValues, ".template-card", handleCardClick);
+const addCard = (item) => {
+  const card = new Card(item, ".template-card", handleCardClick);
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
-});
+}
+
+const addPopup = new PopupWithForm(".popup_type_add", addCard, {}, addFormValidator.toggleButtonState.bind(addFormValidator));
 addPopup.setEventListeners();
 
 const userInfo = new UserInfo({ nameSelector: ".profile__title", jobSelector: ".profile__subtitle" });
@@ -52,11 +54,7 @@ editPopup.setEventListeners();
 const cardList = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, ".template-card", handleCardClick);
-      const cardElement = card.generateCard();
-      cardList.addItem(cardElement);
-    },
+    renderer: addCard,
   },
   cards
 );

@@ -1,11 +1,12 @@
 import { Popup } from "./Popup";
 
 export class PopupWithForm extends Popup {
-  constructor(popupSelector, formSubmit, values = {}) {
+  constructor(popupSelector, formSubmit, values = {}, toggleButtonState) {
     super(popupSelector);
     this.formSubmit = formSubmit;
     this._inputList = Array.from(this._element.querySelectorAll('.popup__form-input'));
     this.values = values;
+    this.toggleButtonState = toggleButtonState;
   }
   _getInputValues() {
     const inputValues = {};
@@ -36,6 +37,9 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+    if (typeof this.toggleButtonState === 'function') {
+      this.toggleButtonState();
+    }
   }
   open() {
     super.open();
