@@ -17,7 +17,6 @@ export class Popup {
   _handleEscClose(event) {
     if (event.key === ESCAPE) {
       this.close();
-      console.log("привет");
     }
   }
   setEventListeners() {
