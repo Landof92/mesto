@@ -15,9 +15,11 @@
     <main class="content">
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__foto"
-            src="<%=require('./blocks/profile/__foto/images/karsten-winegeart-n3c5pSoD2Fc-unsplash.jpg')%>"
-            alt="собака на красном фоне в новогоднем костюме и плюшевыми рогами оленя">
+          <div class="profile__image">
+            <img class="profile__foto"
+              src="<%=require('./blocks/profile/__foto/images/karsten-winegeart-n3c5pSoD2Fc-unsplash.jpg')%>"
+              alt="собака на красном фоне в новогоднем костюме и плюшевыми рогами оленя">
+          </div>
           <div class="profile__info">
             <div class="profile__head">
               <h1 class="profile__title">
@@ -83,6 +85,30 @@
         <h2 class="popup__title popup__title_type_image">
           Горный алтай
         </h2>
+      </div>
+    </section>
+    <section class="popup popup_type_update">
+      <div class="popup__container">
+        <button class="button popup__close" type="button"></button>
+        <h2 class="popup__title">
+          Обновить аватар
+        </h2>
+        <form class="popup__form" name="update-form" novalidate>
+          <input class="popup__form-input popup__form-input_type_img" id="img" type="url" name="img" required>
+          <span class="popup__form-input-error" id="img-error"></span>
+          <input class="button popup__form-button" type="submit" value="Cохранить">
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_type_confirm">
+      <div class="popup__container">
+        <button class="button popup__close" type="button"></button>
+        <h2 class="popup__title popup__title_type_confirm">
+          Вы уверены?
+        </h2>
+        <form class="popup__form" name="confirm-form" novalidate>
+          <input class="button popup__form-button" type="submit" value="Cохранить">
+        </form>
       </div>
     </section>
   </div>
