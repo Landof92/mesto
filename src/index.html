@@ -107,7 +107,7 @@
           Вы уверены?
         </h2>
         <form class="popup__form" name="confirm-form" novalidate>
-          <input class="button popup__form-button" type="submit" value="Cохранить">
+          <input class="button popup__form-button" type="submit" value="Да">
         </form>
       </div>
     </section>
@@ -118,7 +118,10 @@
       <img class="card__image" src="#" alt="картинка">
       <div class="card__footer">
         <h2 class="card__title"></h2>
-        <button class="button card__like"></button>
+        <div class="card__like-container">
+          <button class="button card__like"></button>
+          <p class="card__like-counter">0</p>
+        </div>
       </div>
     </div>
   </template>

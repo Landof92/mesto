@@ -1,11 +1,11 @@
 import { Popup } from "./Popup";
 
 export class PopupWithForm extends Popup {
-  constructor(popupSelector, formSubmit, values = {}, toggleButtonState) {
+  constructor(popupSelector, formSubmit, getValues, toggleButtonState) {
     super(popupSelector);
     this.formSubmit = formSubmit;
     this._inputList = Array.from(this._element.querySelectorAll('.popup__form-input'));
-    this.values = values;
+    this.getValues = getValues;
     this.toggleButtonState = toggleButtonState;
   }
   _getInputValues() {
@@ -16,14 +16,17 @@ export class PopupWithForm extends Popup {
     return inputValues;
   }
   _setInputValues() {
-    Object.keys(this.values).forEach((key) => {
-      const inputIndex = this._inputList.findIndex((input) => {
-        return input.name === key;
+    if (typeof this.getValues === 'function') {
+      const values = this.getValues();
+      Object.keys(values).forEach((key) => {
+        const inputIndex = this._inputList.findIndex((input) => {
+          return input.name === key;
+        })
+        if (inputIndex !== -1) {
+          this._inputList[inputIndex].value = values[key];
+        }
       })
-      if (inputIndex !== -1) {
-        this._inputList[inputIndex].value = this.values[key];
-      }
-    })
+    }
   }
   setEventListeners() {
     super.setEventListeners();
@@ -31,7 +34,6 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
       this.formSubmit(this._getInputValues());
-      this.close();
     })
   }
   close() {
@@ -44,5 +46,11 @@ export class PopupWithForm extends Popup {
   open() {
     super.open();
     this._setInputValues();
+  }
+  setLoading(isLoading) {
+    const button = this._element.querySelector(".popup__form-button")
+    isLoading ?
+      button.value = "Сохранение..."
+      : button.value = "Cохранить"
   }
 };
