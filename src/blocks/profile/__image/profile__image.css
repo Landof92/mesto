@@ -4,7 +4,6 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
-  border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
 }
@@ -16,7 +15,7 @@
 }
 
 .profile__image::before, .profile__image::after {
-  background: #000 ;
+  background: #000;
   position: absolute;
   top: 0;
   left: 0;
