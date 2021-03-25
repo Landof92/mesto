@@ -76,7 +76,6 @@ const createCard = ({ name, link }) => {
     });
 };
 
-
 const addPopup = new PopupWithForm(".popup_type_add", createCard, {}, addFormValidator.toggleButtonState.bind(addFormValidator));
 addPopup.setEventListeners();
 
