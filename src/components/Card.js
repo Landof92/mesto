@@ -45,6 +45,9 @@ export class Card {
         this._likeCounter.textContent = res.likes.length;
         this._likes = res.likes;
         this._element.querySelector(".card__like").classList.toggle("card__like_active");
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -58,7 +61,7 @@ export class Card {
       this._toggleLike()
     });
     this._element.querySelector(".card__delete").addEventListener('click', () => {
-      this._handleDeleteClick(this);
+      this._handleDeleteClick(this.id, this.deleteCard.bind(this));
     });
     this._element.querySelector(".card__image").addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)

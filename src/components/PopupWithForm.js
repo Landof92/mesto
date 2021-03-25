@@ -49,8 +49,7 @@ export class PopupWithForm extends Popup {
   }
   setLoading(isLoading) {
     const button = this._element.querySelector(".popup__form-button")
-    isLoading ?
-      button.value = "Сохранение..."
-      : button.value = "Cохранить"
+    button.value = isLoading ? "Сохранение..." : "Cохранить";
+    button.disabled = isLoading;
   }
-};
+}

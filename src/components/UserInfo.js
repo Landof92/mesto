@@ -13,10 +13,14 @@ export class UserInfo {
   getUserId() {
     return this._info._id;
   }
+  setAvatar(avatar) {
+    this.avatarElement.src = avatar;
+    this._info.avatar = avatar;
+  }
   setUserInfo({ name, about, _id, avatar }) {
     this.nameElement.textContent = name;
     this.jobElement.textContent = about;
-    this.avatarElement.src = avatar;
     this._info = { name, about, _id, avatar };
+    this.setAvatar(avatar);
   }
 };
